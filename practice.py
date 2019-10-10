@@ -59,12 +59,13 @@ def play_game():
         print(' '.join(word_display))
         if decrement_guesses:
             guesses_left -= 1
+        if guesses_left == 0:      
+            print('Sorry, you ran out of guesses. You lose.')
 
         
 
 
-# if guesses_left = 0:      
-    # print('Sorry, you ran out of guesses. You lose.')
+
 
     print(f"The word was {word_to_guess}")
 
