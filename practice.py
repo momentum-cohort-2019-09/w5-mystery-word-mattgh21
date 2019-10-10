@@ -15,9 +15,6 @@ def get_word():
 
         return word_to_guess
 
-# print(f'The word to guess is {word_to_guess}')
-# print(word_to_guess[1])
-# print(len(word_to_guess))
 
 def display_letters(word_to_guess, letters_guessed, word_display):
     for letter in word_to_guess:
@@ -43,24 +40,32 @@ def evaluate_guess(guess_letter, letters_guessed, word_to_guess, word_display):
         if guess_letter not in word_display:
             decrement_guesses = True
         return decrement_guesses
+
     
 def play_game():
     word_to_guess = get_word()
+    print('Welcome to Mystery Word!\n')
     print("Letters in word: " + str(len(word_to_guess)))
     guesses_left = 8
     letters_guessed = []
     while guesses_left > 0:
         print(f"You have {guesses_left} guesses left")
         guess_letter = input("Guess a letter: ")
+        # print(word_to_guess)
         word_display = []
         print(letters_guessed)
-        print(guesses_left)
+        
         decrement_guesses = evaluate_guess(guess_letter, letters_guessed, word_to_guess, word_display) 
         print(' '.join(word_display))
+        # print(word_to_guess, word_display)
+        if list(word_to_guess) == word_display:
+            print('You Win!')
+            break
         if decrement_guesses:
             guesses_left -= 1
-        if guesses_left == 0:      
+        if guesses_left == 0:     
             print('Sorry, you ran out of guesses. You lose.')
+        
 
         
 
@@ -71,31 +76,3 @@ def play_game():
 
 
 play_game()
-
-    
-
-
-
-
-
-
-
-    # if random.choice(stripped_words) == guess_word:
-    #     print('you guessed it!')
-    # else:
-    #     print("try again!")
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
