@@ -53,7 +53,7 @@ def play_game():
         guess_letter = input("Guess a letter: ")
         # print(word_to_guess)
         word_display = []
-        print(letters_guessed)
+        print(f"Letters Guessed: {letters_guessed}")
         
         decrement_guesses = evaluate_guess(guess_letter, letters_guessed, word_to_guess, word_display) 
         print(' '.join(word_display))
