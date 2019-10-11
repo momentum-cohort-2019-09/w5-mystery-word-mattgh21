@@ -107,6 +107,7 @@ def play_game():
         if guesses_left == 0:     
             print('Sorry, you ran out of guesses. You lose.')
 
+    print(f"The word was {word_to_guess}")
     play_again(input('Do you want to play again? (yes/no)'))
         
 
@@ -115,7 +116,7 @@ def play_game():
 
 
 
-    print(f"The word was {word_to_guess}")
+    
 
 
 play_game()
