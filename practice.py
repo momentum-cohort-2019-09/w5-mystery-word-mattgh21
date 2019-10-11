@@ -1,7 +1,8 @@
 import random
 
 
-def get_word():
+def get_word(select_difficulty):
+    word_to_guess = ''
     with open ("words.txt") as my_file:
         my_file = my_file.readlines()
 
@@ -13,7 +14,23 @@ def get_word():
 
         word_to_guess = random.choice(stripped_words)
 
-        return word_to_guess
+        
+    
+    if select_difficulty == 'easy':
+        if 4 <= len(word_to_guess) <= 6:
+            return word_to_guess
+        else: 
+            return get_word('easy')
+    elif select_difficulty == 'medium':
+        if 6 <= len(word_to_guess) <= 8:
+            return word_to_guess
+        else:
+            return get_word('medium')
+    elif select_difficulty == 'hard':
+        if len(word_to_guess) >= 8:
+            return word_to_guess
+        else:
+            return get_word('hard')
 
 
 def display_letters(word_to_guess, letters_guessed, word_display):
@@ -41,11 +58,26 @@ def evaluate_guess(guess_letter, letters_guessed, word_to_guess, word_display):
             decrement_guesses = True
         return decrement_guesses
 
+
+def set_difficulty():
+    select_difficulty = input("How difficult do you want this game to be? (Type 'easy', 'medium', or 'hard')")
+    chosen = False
+    while not chosen:
+        if select_difficulty == 'easy':
+            chosen = True
+        elif select_difficulty == 'medium':
+            chosen = True
+        elif select_difficulty == 'hard':
+            chosen = True
+    return select_difficulty
+    
     
 def play_game():
-    word_to_guess = get_word()
+    difficulty = set_difficulty()
+    word_to_guess = get_word(difficulty)
     print('Welcome to Mystery Word!\n')
     print("Letters in word: " + str(len(word_to_guess)))
+    
     guesses_left = 8
     letters_guessed = []
     while guesses_left > 0:
