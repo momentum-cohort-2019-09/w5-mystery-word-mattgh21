@@ -53,6 +53,7 @@ def evaluate_guess(guess_letter, letters_guessed, word_to_guess, word_display):
         print('You already guessed that') 
     else:
         letters_guessed.append(guess_letter)
+        
         word_display = display_letters(word_to_guess, letters_guessed, word_display)
         if guess_letter not in word_display:
             decrement_guesses = True
@@ -70,6 +71,13 @@ def set_difficulty():
         elif select_difficulty == 'hard':
             chosen = True
     return select_difficulty
+
+
+def play_again(play):
+    if play == 'yes':
+        play_game()
+    elif play == 'no':
+        print('Thanks for playing!')
     
     
 def play_game():
@@ -85,11 +93,12 @@ def play_game():
         guess_letter = input("Guess a letter: ")
         # print(word_to_guess)
         word_display = []
-        print(f"Letters Guessed: {letters_guessed}")
+        
         
         decrement_guesses = evaluate_guess(guess_letter, letters_guessed, word_to_guess, word_display) 
         print(' '.join(word_display))
-        # print(word_to_guess, word_display)
+        print(f"Letters Guessed: {letters_guessed}")
+        
         if list(word_to_guess) == word_display:
             print('You Win!')
             break
@@ -97,6 +106,8 @@ def play_game():
             guesses_left -= 1
         if guesses_left == 0:     
             print('Sorry, you ran out of guesses. You lose.')
+
+    play_again(input('Do you want to play again? (yes/no)'))
         
 
         
