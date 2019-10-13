@@ -91,7 +91,7 @@ def play_game():
     while guesses_left > 0:
         print(f"You have {guesses_left} guesses left")
         guess_letter = input("Guess a letter: ")
-        print(word_to_guess)
+        # print(word_to_guess)
         word_display = []
         
         
